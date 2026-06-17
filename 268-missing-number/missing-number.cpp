@@ -1,6 +1,8 @@
 class Solution {
 public:
+    
     int missingNumber(vector<int>& nums) {
+       // solution 1 , extra space required for this soln
         int n = nums.size();
      vector<int> hash(n+1 , 0);
         for(int i = 0 ; i < n ; i++){
@@ -11,5 +13,7 @@ public:
             
         }
     return -1 ;
+    
+
     }
 };

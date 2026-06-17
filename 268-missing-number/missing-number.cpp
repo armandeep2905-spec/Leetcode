@@ -7,8 +7,8 @@ public:
             hash[nums[i]]++;
         }
         for(int i = 0 ; i < hash.size() ; i++){
-            if(hash[i] == 0)
-            return i;
+            if(hash[i] == 0) return i;
+            
         }
     return -1 ;
     }

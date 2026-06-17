@@ -26,7 +26,6 @@ public:
         if(count ==0 ) el = nums[i];
         if(nums[i] == el) count ++;
         if(nums[i] != el) count --;
-        if(count == 0) el = nums[i+1];
     }
      int elCount = 0 ;
     for(int i = 0 ; i < nums.size() ; i++){

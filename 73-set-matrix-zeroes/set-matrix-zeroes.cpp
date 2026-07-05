@@ -66,12 +66,14 @@ public:
 //Optimal soln -> 
 
  void setZeroes(vector<vector<int>>& matrix) {
-     int col0 = matrix[0][0];
+     int col0 = matrix[0][0]; // extra variable for conflicting box
          for ( int i = 0 ; i < matrix.size() ; i++){
             for(int j = 0 ; j < matrix[0].size() ; j ++){
                 if(matrix[i][j] == 0 ){
                     matrix[i][0] = 0;    
-                    if( j != 0){
+                    if( j != 0){ 
+                    // value of the 1st col i.e col[0] is stored in separate variable
+                    //bacuz we have made a separate varible  col0 for storing info abt col[0]
                         matrix[0][j] = 0;
                     }          
                     else col0 = 0;
@@ -80,7 +82,7 @@ public:
          }
 
 
-        for(int i =1 ; i < matrix.size() ; i++){
+        for(int i =1 ; i < matrix.size() ; i++){ // loop for the box other than row[0] and col[0] as they store info 
             for(int j = 1 ; j<matrix[0].size() ; j++){
              if(matrix[i][j] != 0 ){
                 if(matrix[i][0] == 0 || matrix [0][j] == 0){
@@ -92,12 +94,15 @@ public:
             
         }
 
-        if(matrix[0][0] == 0){
+        if(matrix[0][0] == 0){ // matrix[0][0] stores info for row[0] and row must be filled first , otherwise if we solve for
+        // col[0] first , the col0 will change the value for matrix zero
             for(int j = 0 ; j < matrix[0].size() ; j++){
                 matrix[0][j] = 0;
             }
         }
-        if(col0 == 0){
+
+
+        if(col0 == 0){ //col0 has info for whether the col[0] will become zero or not.
             for(int i = 0 ; i < matrix.size() ; i++){
                 matrix[i][0] = 0;
             }

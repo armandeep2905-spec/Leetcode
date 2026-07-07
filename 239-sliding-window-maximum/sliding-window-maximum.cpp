@@ -21,8 +21,8 @@ public:
 
         // 1st window 
         for(int i = 0 ; i < k ; i++){
-            while(!dq.empty() && nums[i] >= nums[dq.back()]){
-                dq.pop_back();
+            while(!dq.empty() && nums[i] >= nums[dq.back()]){ // cant use if here bcauz we may have to remove multiple smaller elements
+                dq.pop_back();  
             }
         dq.push_back(i);
         }

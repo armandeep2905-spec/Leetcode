@@ -16,23 +16,47 @@ public:
         // } 
 
         //  return ans;
+    
+    //better soln 
+    // int n = height.size();
+    // vector<int> lMax(n , -1);
+    // vector<int> rMax(n , -1);
+    // lMax[0] = height[0];
+    // int ans = 0 ;
+    // rMax[n-1]= height[n-1];
+    // for(int i = 1 ; i < n ; i++){
+    //     lMax[i] = max(lMax[i-1],height[i]);
+    // }
+    // for(int i = n-2 ; i >=0 ; i--){
+    //     rMax[i] = max(rMax[i+1] , height[i]);
+    // }
 
+    // for(int i = 0 ; i < n ; i++){
+    //    ans += min(rMax[i] , lMax[i]) - height[i];
+    // }
+    // return ans;
+
+
+    //Optimal Solution->
     int n = height.size();
-    vector<int> lMax(n , -1);
-    vector<int> rMax(n , -1);
-    lMax[0] = height[0];
-    int ans = 0 ;
-    rMax[n-1]= height[n-1];
-    for(int i = 1 ; i < n ; i++){
-        lMax[i] = max(lMax[i-1],height[i]);
-    }
-    for(int i = n-2 ; i >=0 ; i--){
-        rMax[i] = max(rMax[i+1] , height[i]);
-    }
+    int l = 0 ;
+    int r = n-1;
+    int lmax = INT_MIN;
+    int rmax = INT_MIN;
+    int ans = 0;
+    while(l < r){
+        lmax = max(lmax , height[l]);
+        rmax = max(rmax , height[r]);
 
-    for(int i = 0 ; i < n ; i++){
-       ans += min(rMax[i] , lMax[i]) - height[i];
+        if(lmax < rmax) {
+           ans += lmax - height[l];
+             l++ ;
+        }
+        else {
+            ans+= rmax - height[r];
+            r--;
+        }
     }
     return ans;
-    }
+     }
 };

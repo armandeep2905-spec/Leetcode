@@ -13,8 +13,8 @@ public:
     ListNode* reverseKGroup(ListNode* head, int k) {
         // check if k groups exists or not
         ListNode *temp = head ;
-        int count = 0;
-        while(count < k){
+        int count = 1; // include the head node
+        while(count <= k){
             if(temp == NULL) { return head;}
             temp = temp->next;
             count++;

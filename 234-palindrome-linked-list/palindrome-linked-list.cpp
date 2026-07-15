@@ -65,7 +65,7 @@ public:
             first = first->next;
             second = second->next;
         }
-        reverseList(slow->next);
+        // reverseList(slow->next);
         return true;
 
 

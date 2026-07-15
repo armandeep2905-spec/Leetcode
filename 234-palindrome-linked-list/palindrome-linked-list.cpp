@@ -51,21 +51,21 @@ public:
  bool isPalindrome(ListNode* head) {
     if(head==NULL || head->next ==NULL) return true; // edge case
         ListNode* slow = head;  ListNode* fast = head;
-        while(fast->next != NULL && fast->next->next != NULL){
+        while(fast->next != NULL && fast->next->next != NULL){ // these are diff from normal conditons as we need to stop at second last node for even case and we are using middle one and not middle two
+        
             fast = fast->next->next ;
             slow = slow->next;
         }
-        // mid == slow 
        
         ListNode* newHead =  reverseList(slow->next);
         ListNode* first = head;
         ListNode* second = newHead;
-        while(second != NULL){
+        while(second != NULL){ // running until second is NULL because we get exact number of comparisons this way
             if(first->val != second->val) return false;
             first = first->next;
             second = second->next;
         }
-        // reverseList(slow->next);
+        // reverseList(slow->next); //optional step as we only need true false
         return true;
 
 

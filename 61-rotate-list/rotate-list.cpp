@@ -14,12 +14,21 @@ public:
         if (head == NULL || head->next == NULL || k == 0)   return head;
          ListNode* temp = head; 
          ListNode* tail = head; 
-         int length = 1; 
-         while(temp->next != NULL){
+         int length = 0; 
+         while(temp != NULL){
               length++;
+              tail = temp;
               temp = temp->next ;
          }
-         tail = temp;
+
+        // int length = 1.  can also use this way
+        //  while(temp->next != NULL){
+        //     length++;
+        //     temp = temp->next ;
+        //  }
+        // tail = temp;
+
+
          if (k % length == 0) return head;
          k = k % length ;
          tail->next = head;

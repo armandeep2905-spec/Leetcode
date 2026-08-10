@@ -16,13 +16,13 @@ public:
         int in_idx = in_start;
         TreeNode* newRoot = new TreeNode(pre[preIndex]);
         preIndex++;
-        while(true){
+        while(true){ // to find corresponding in order index 
              if(newRoot->val == in[in_idx]){
                 break;
              }
              in_idx++;
         }
-        newRoot->left = helper(pre , in ,  preIndex , in_start , in_idx - 1);
+        newRoot->left = helper(pre , in ,  preIndex , in_start , in_idx - 1); // from inorder index we know the start and end of left and right subtree of curr tree
         newRoot->right = helper(pre , in ,  preIndex , in_idx+1 , in_end);
         return newRoot;
 

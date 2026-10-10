@@ -2,7 +2,7 @@
 class Solution {
 public:
     bool wordBreak(string s, vector<string>& wordDict) {
-        vector<bool> dp(s.length() + 1);
+        vector<bool> dp(s.length() + 1 , false);
         dp[0] = true; // for empty String;
         if(s.length() == 0) return dp[0];
         int maxLen = -1;
@@ -12,7 +12,8 @@ public:
         }
         
         for(int i = 1 ; i <= s.length() ; i++){
-            for(int j = i - 1 ; j >= max(0 ,i - maxLen) ; j-- ){
+            for(int j = i - 1 ; j >= 0 ; j-- ){
+                if(i-j > maxLen) break;
                 if(!dp[j]) continue;
                 string sub = s.substr(j , i - j);
 
